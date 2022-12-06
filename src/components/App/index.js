@@ -56,6 +56,8 @@ function App() {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(),
 		});
+		data = await response.json();
+		console.log(data);
 	}
 
 	function clearList() {
