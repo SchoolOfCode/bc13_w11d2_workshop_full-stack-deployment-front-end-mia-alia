@@ -49,10 +49,20 @@ function App() {
 		setList((previous) => [...previous, listItemWithId]);
 	}
 
+	//adding delete function to database
+	async function deleteAllFromDB() {
+		const response = await fetch(`${url}/items`, {
+			method: 'DELETE',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(),
+		});
+	}
+
 	function clearList() {
 		//This function clears all the items that have been added to the list.
 		const clearedList = [];
 		setList(clearedList);
+		deleteAllFromDB();
 	}
 
 	//adding ansync function for patch request
