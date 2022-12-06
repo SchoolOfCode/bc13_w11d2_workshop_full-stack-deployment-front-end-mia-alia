@@ -57,10 +57,13 @@ function App() {
 
 	//adding ansync function for patch request
 	async function completedToggle(idOfTickedItem) {
+		const completedItem = list.filter((item) => {
+			item.id === idOfTickedItem;
+		});
 		const response = await fetch(`${url}/items/${idOfTickedItem}`, {
 			method: 'PATCH',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ completed: false }), //modify this line to toggle true/false properly
+			body: JSON.stringify({ completed: !completedItem[0].completed }), //modify this line to toggle true/false properly
 		});
 		const data = await response.json();
 		console.log(data);
