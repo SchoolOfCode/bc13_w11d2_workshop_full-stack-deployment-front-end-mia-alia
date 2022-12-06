@@ -60,11 +60,15 @@ function App() {
 		console.log(data);
 	}
 
+	async function callDeleteAllFromDB() {
+		await deleteAllFromDB();
+	}
+
 	function clearList() {
 		//This function clears all the items that have been added to the list.
 		const clearedList = [];
 		setList(clearedList);
-		deleteAllFromDB();
+		callDeleteAllFromDB();
 	}
 
 	//adding ansync function for patch request
